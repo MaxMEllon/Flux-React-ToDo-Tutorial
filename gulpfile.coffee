@@ -1,23 +1,21 @@
 gulp        = require 'gulp'
 coffee      = require 'gulp-coffee'
-glob        = require 'glob'
-cjsx        = require 'gulp-cjsx'
-sass        = require 'gulp-sass'
+coffeex     = require 'gulp-coffee-react'
 concat      = require 'gulp-concat'
-plumber     = require 'gulp-plumber'
-runSequence = require 'run-sequence'
-browserify  = require 'browserify'
-reactify    = require 'coffee-reactify'
-source      = require 'vinyl-source-stream'
+sass        = require 'gulp-sass'
+browserSync = require 'browser-sync'
+webserver   = require 'gulp-webserver'
 
-gulp.task 'default', ->
-  srcFiles = glob.sync('./src/scripts/**/*.coffee')
-  return browserify
-          entries: srcFiles
-          transform: ['coffee-reactify']
-      .bundle()
-      .pipe source('bundle.js')
-      .pipe gulp.dest('./build')
+gulp.task 'coffeex', ->
+  gulp.src './src/coffee/**/*.coffee'
+    .pipe coffeex bare: true
+    .pipe gulp.dest './build'
+    .pipe browserSync.stream()
+
+gulp.task 'concat', ->
+  gulp.src './build/**/*.js'
+    .pipe concat 'all.js'
+    .pipe gulp.dest './build'
 
 gulp.task 'webserver', ->
   gulp.src ''
@@ -27,4 +25,6 @@ gulp.task 'webserver', ->
       port: '8000'
 
 gulp.task 'watch', ->
-    gulp.watch './src/*.coffee', ['default', 'webserver']
+    gulp.watch './src/coffee/**/*.coffee', ['coffeex', 'concat']
+
+gulp.task 'default', ['coffeex', 'concat',  'webserver', 'watch']
