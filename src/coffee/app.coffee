@@ -5,6 +5,6 @@ Application = React.createClass
     </div>
 
 class @TodoApplication
-  drawComponent: (id) ->
+  @drawComponent: (id) ->
     ReactDOM.render <Application />, document.getElementById(id)
 
