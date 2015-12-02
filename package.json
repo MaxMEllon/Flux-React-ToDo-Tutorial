@@ -1,7 +1,7 @@
 {
   "name": "Flux-React-ToDo-Tutorial",
   "version": "1.0.0",
-  "description": "",
+  "description": "Flux, React and Electron Tutorial with coffee-script or type-script",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/MaxMEllon/Flux-React-ToDo-Tutorial.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["Tutorial"],
+  "author": "MaxMEllon",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MaxMEllon/Flux-React-ToDo-Tutorial/issues"
   },

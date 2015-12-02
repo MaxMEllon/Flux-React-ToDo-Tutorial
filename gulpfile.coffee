@@ -16,7 +16,7 @@ gulp.task 'coffeex', ->
 gulp.task 'compass', ->
   gulp.src './src'
     .pipe compass
-      css: '.sass-cache/compass-cache/' # compassコマンド実行時のキャッシュを.sass-cache以下へねじ込む
+      css: '.sass-cache/compass-cache/'
       sass: './src/sass/'
     .pipe autoprefixer()
     .pipe gulp.dest './build'
