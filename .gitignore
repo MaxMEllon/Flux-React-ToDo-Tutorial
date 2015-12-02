@@ -1,3 +1,5 @@
+!.keep
 /node_modules
 /build
 /bower_components
+/dist/*.js

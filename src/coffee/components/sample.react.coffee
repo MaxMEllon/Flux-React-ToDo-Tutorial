@@ -1,5 +1,5 @@
-class Sample extends React.Component
+Sample = React.createClass
   render: ->
     <div>
-      <p>Sample</p>
+      hogepoge
     </div>

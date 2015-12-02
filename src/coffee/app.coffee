@@ -4,4 +4,7 @@ Application = React.createClass
       <Sample />
     </div>
 
-React.render(<Application />, $('.container')[0])
+class @TodoApplication
+  drawComponent: (id) ->
+    ReactDOM.render <Application />, document.getElementById(id)
+

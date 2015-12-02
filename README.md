@@ -7,3 +7,10 @@ $ npm i
 $ gulp watch
 ```
 
+### Run with electron
+
+```
+$ npm i -g electron-prebuilt
+$ npm i
+$ electron .
+```

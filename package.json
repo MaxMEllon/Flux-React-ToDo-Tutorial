@@ -2,7 +2,7 @@
   "name": "Flux-React-ToDo-Tutorial",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +28,11 @@
     "gulp-sass": "^2.1.0",
     "gulp-sequence": "^0.4.1",
     "gulp-webserver": "^0.9.1",
+    "jquery": "^2.1.4",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "requirejs": "^2.1.22",
+    "rimraf": "^2.4.4",
     "run-sequence": "^1.1.5"
   }
 }
