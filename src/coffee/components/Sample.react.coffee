@@ -1,3 +1,5 @@
 Sample = React.createClass
-  render: -> vk (d) ->
-    d.div 'hogepoge'
+  render: ->
+    <div>
+      <div>hogehoge</div>
+    </div>

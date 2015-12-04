@@ -1,7 +1,8 @@
 Application = React.createClass
-  render: -> vk (d) ->
-    d.div ->
-      d.Sample
+  render: ->
+    <div>
+      <Sample />
+    </div>
 
 class @TodoApplication
   @drawComponent: (id) ->

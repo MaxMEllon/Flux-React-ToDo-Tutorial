@@ -37,7 +37,6 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "requirejs": "^2.1.22",
-    "run-sequence": "^1.1.5",
-    "vk": "github:mizchi/vk"
+    "run-sequence": "^1.1.5"
   }
 }
