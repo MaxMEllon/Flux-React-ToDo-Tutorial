@@ -14,17 +14,17 @@ update: (id, updates) ->
 
 AppDispatcher.register( (action)->
   switch (action.actionType)
-    when TodoActions.TODO_CREATE:
+    when TodoActions.TODO_CREATE
       text = action.text.trim()
       unless text is ''
         create(text)
         TodoStore.emitChange()
-    when TodoActions.TODO_UPDATE_TEXT:
+    when TodoActions.TODO_UPDATE_TEXT
       text = action.text.trim()
       unless text is ''
         update(action.id, text: text)
         TodoStore.emitChange()
-    default:
+    else
       # no op
 )
 
