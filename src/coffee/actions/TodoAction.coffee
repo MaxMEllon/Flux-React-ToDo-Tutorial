@@ -6,6 +6,6 @@ class TodoActions
 
   updateText: (text) ->
     AppDispatcher.dispatch
-      actionType: TodoConstants.TODO_CREATE
+      actionType: TodoConstants.TODO_UPDATE_TEXT
       id: id
       text: text
