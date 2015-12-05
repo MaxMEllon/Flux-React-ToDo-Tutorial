@@ -1,2 +1,2 @@
-@AppDispatcher = Flux.Dispatcher
+@AppDispatcher = new Flux.Dispatcher
 window.AppDispatcher = @AppDispatcher

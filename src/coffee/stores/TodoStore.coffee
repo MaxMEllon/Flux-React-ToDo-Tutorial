@@ -1,4 +1,3 @@
-assign = require 'object-assign'
 
 _todos = {}
 
@@ -10,7 +9,15 @@ create: (text) ->
     text: text
 
 update: (id, updates) ->
-  _todo[id] = assign({}, _todos[id], updates)
+  _todo[id] = Object.assign({}, _todos[id], updates)
+
+TodoStore = Object.assign({}, EventEmitter.prototype, ->
+  areAllComplete: ->
+    for id in _todos
+      unless _todos[id].complete
+        return false
+    return true
+)
 
 AppDispatcher.register( (action)->
   switch (action.actionType)
