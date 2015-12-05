@@ -11,7 +11,7 @@ create: (text) ->
 update: (id, updates) ->
   _todo[id] = Object.assign({}, _todos[id], updates)
 
-TodoStore = Object.assign({}, EventEmitter.prototype, ->
+TodoStore = Object.assign({}, EventEmitter, ->
   areAllComplete: ->
     for id in _todos
       unless _todos[id].complete
@@ -25,13 +25,14 @@ AppDispatcher.register( (action)->
       text = action.text.trim()
       unless text is ''
         create(text)
-        TodoStore.emitChange()
+        TodoStore.emit()
     when TodoActions.TODO_UPDATE_TEXT
       text = action.text.trim()
       unless text is ''
         update(action.id, text: text)
-        TodoStore.emitChange()
+        TodoStore.emit()
     else
+      console.debug 'hgoe'
       # no op
 )
 
