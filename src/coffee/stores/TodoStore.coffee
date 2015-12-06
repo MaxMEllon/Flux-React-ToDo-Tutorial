@@ -1,38 +1,48 @@
+CHANGE_EVENT = 'change'
 
 _todos = {}
 
-create: (text) ->
+_create = (text) ->
   id = 0
   _todos[id] =
     id: id
     complete: false
     text: text
 
-update: (id, updates) ->
+_update = (id, updates) ->
   _todo[id] = Object.assign({}, _todos[id], updates)
 
 TodoStore = Object.assign({}, EventEmitter, ->
   areAllComplete: ->
     for id in _todos
       unless _todos[id].complete
-        return false
-    return true
+        false
+    true
+  all: ->
+    _todos
+  emitChange: ->
+    this.emit(CHANGE_EVENT)
+  addChangeListener: (callback) ->
+    this.on(CHANGE_EVENT, callback)
+  removeChangeListener: (callback) ->
+    this.removeListener(CHANGE_EVENT, callback)
 )
 
 AppDispatcher.register( (action)->
   switch (action.actionType)
-    when TodoActions.TODO_CREATE
+    when TodoConstants.TODO_CREATE
       text = action.text.trim()
       unless text is ''
-        create(text)
-        TodoStore.emit()
-    when TodoActions.TODO_UPDATE_TEXT
+        _create(text)
+        TodoStore.emitChange()
+      break
+    when TodoConstants.TODO_UPDATE_TEXT
       text = action.text.trim()
       unless text is ''
-        update(action.id, text: text)
-        TodoStore.emit()
+        _update(action.id, text: text)
+        TodoStore.emitChange()
+      break
     else
-      console.debug 'hgoe'
       # no op
 )
 
