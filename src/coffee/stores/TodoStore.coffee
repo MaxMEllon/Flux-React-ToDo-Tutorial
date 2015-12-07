@@ -1,4 +1,4 @@
-merge = require('merge')
+merge  = require('merge')
 assign = require('object-assign')
 
 CHANGE_EVENT = 'change'
@@ -6,7 +6,7 @@ CHANGE_EVENT = 'change'
 _todos = {}
 
 _create = (text) ->
-  id = 0
+  id = + new Date() + Math.floor(Math.random() * 999999).toString(36)
   _todos[id] =
     id: id
     complete: false
@@ -14,6 +14,13 @@ _create = (text) ->
 
 _update = (id, updates) ->
   _todo[id] = assign({}, _todos[id], updates)
+
+_updateAll = (updates) ->
+  for todo in _todos
+    _update(todo.id, updates)
+
+_destroy = (id) ->
+  delete _todos[id]
 
 TodoStore = new window.EventEmitter()
 
@@ -23,6 +30,12 @@ merge(TodoStore,
 
   addChangeListener: (callback) ->
     @on(CHANGE_EVENT, callback)
+
+  areAllComplete: ->
+    for todo in _todos
+      unless todo.complete is true
+        return false
+    return true
 
   getAll: ->
     _todos
