@@ -1,3 +1,6 @@
+merge = require('merge')
+assign = require('object-assign')
+
 CHANGE_EVENT = 'change'
 
 _todos = {}
@@ -10,22 +13,19 @@ _create = (text) ->
     text: text
 
 _update = (id, updates) ->
-  _todo[id] = Object.assign({}, _todos[id], updates)
+  _todo[id] = assign({}, _todos[id], updates)
 
-TodoStore = Object.assign({}, EventEmitter, ->
-  areAllComplete: ->
-    for id in _todos
-      unless _todos[id].complete
-        false
-    true
-  all: ->
-    _todos
+TodoStore = new window.EventEmitter()
+
+merge(TodoStore,
   emitChange: ->
-    this.emit(CHANGE_EVENT)
+    @emit(CHANGE_EVENT)
+
   addChangeListener: (callback) ->
-    this.on(CHANGE_EVENT, callback)
-  removeChangeListener: (callback) ->
-    this.removeListener(CHANGE_EVENT, callback)
+    @on(CHANGE_EVENT, callback)
+
+  getAll: ->
+    _todos
 )
 
 AppDispatcher.register( (action)->

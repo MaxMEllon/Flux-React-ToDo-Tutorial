@@ -12,4 +12,4 @@ class EventEmitter
     for handler in handlers
       handler.call(this, data)
 
-# @EventEmitter = new EventEmitter
+window.EventEmitter = EventEmitter

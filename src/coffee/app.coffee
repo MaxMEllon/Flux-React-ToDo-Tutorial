@@ -1,3 +1,6 @@
+React    = require('react')
+ReactDOM = require('react-dom')
+
 Application = React.createClass
   render: ->
     <div>
