@@ -3,9 +3,7 @@ ReactDOM = require('react-dom')
 
 Application = React.createClass
   render: ->
-    <div>
-      <Sample />
-    </div>
+    <TodoApp />
 
 class @TodoApplication
   @drawComponent: (id) ->
