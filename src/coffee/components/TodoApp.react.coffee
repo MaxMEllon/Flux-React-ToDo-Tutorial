@@ -3,7 +3,7 @@ _getTodoState = ->
   areAllComplete: TodoStore.areAllComplete()
 
 TodoApp = React.createClass
-  getInitalState: ->
+  getInitialState: ->
     allTodos: TodoStore.getAll()
     areAllComplete: TodoStore.areAllComplete()
 
